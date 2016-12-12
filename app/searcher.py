@@ -1,6 +1,7 @@
 import time
 import rauth
 import csv
+import os
 
 name = ''
 names = ['the harp', 'subway', 'btz sports bar', 'smashburger', 'postino']
