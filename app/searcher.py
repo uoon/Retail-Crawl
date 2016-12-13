@@ -148,6 +148,9 @@ def multi_write(names):
 	print "'yes' to proceed"
 	if raw_input("> ") == 'yes':
 		return writer()
+	else:
+		print "Exiting the program."
+		exit()
 		
 def start():
   print "Running yelp scanner for %s" %names
