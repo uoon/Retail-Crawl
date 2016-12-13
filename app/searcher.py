@@ -4,79 +4,23 @@ import csv
 import os
 
 name = ''
-names = ["Ko' Sin",
-"El Zocalo Mexican Grill",
-"Spinato's Pizza",
-"Caffe Boa",
-"The Normal Diner",
-"Cafe Lalibela",
-"Ted's Hot Dogs",
-"Market Cafe",
-"Curry Corner",
-"Kings Fish House",
-"Sweet Tomatoes",
-"Thai Basil",
-"Casey Moore's Oyster House",
-"Texas Roadhouse",
-"Mijana Restaurant",
-"Genghis Grill",
-"Denny's",
-"Joe's Crab Shack",
-"Mission Grille",
-"LA Fonda Mexican Foods",
-"El Ranchero Mexican Grill",
-"Aj's Fine Foods",
-"The Living Room",
-"Benihana",
-"Taste - An American Bistro",
-"Fatburger",
-"Chili's Grill & Bar",
-"U.S Egg",
-"Moreno's",
-"Barro's Pizza",
-"Freddy's Frozen Custard & Steakburgers",
-"Jimmy John's",
-"Los Favoritos Taco Shop",
-"Red Robin Gourmet Burgers",
-"Turkdish Mediterranean Cuisine",
-"La Famiglia Pizza & Pasta",
-"Hot Pot Caribbean Cuisine",
-"Ocean Blue Caribbean Restaurant and Bar",
-"Biscuits Cafe",
-"AZ Food Crafters",
-"Grimaldis Pizzeria",
-"Amalfi Pizzeria",
-"Famous Dave's",
-"Mimi's Cafe",
-"Elmer's Tacos",
-"Hangar Cafe",
-"Chodong",
-"Saigon Pho",
-"Don Shula's",
-"YC's Mongolian Grill",
-"TOTT's Asian Diner",
-"Fringo's Kitchen",
-"Talebu Coffee and Wine Cafe",
-"Good Time Charlie's Neighborhood Craft Pub",
-"Charm Thai Cuisine",
-"NYPD Pizza",
-"Teakwoods Tavern & Grille",
-"Cafe Cornucopia",
-"Beijing",
-"Rumbi Island Grill",
-"Sidelines Tavern and Grill",
-"Rubio's",
-"Szechwan Garden",
-"Blooming Beets Kitchen",
-"East Wind",
-"Crisp Greens",
-"Yangtse Chinese Bistro",
-"Munchies",
-"Juan Jaime's Tacos and Tequila",
-"Food City",
-"Opa Life Greek Cafe",
-"Phoenicia Cafe",
-"Boulders on Broadway"]
+names = ["Monarch",
+"Butterfields Pancake House",
+"Virtu",
+"Eddie V\'s Prime Seafood",
+"Fogo de Chao Brazilian Steakhouse",
+"Butters Pancakes & Cafe",
+"deseo at Westin Kierland Resort and Spa",
+"Grassroots kitchen and Tap",
+"Rehab Burger Therapy",
+"Roaring Fork",
+"True Food Kitchen",
+"Bandera",
+"Franco\'s Italian Caffe",
+"Mastro\'s City Hall",
+"Citizen Public House",
+"Coconut\'s Fish Cafe",
+"Olive & Ivy"]
 result = []
 
 def get_search_parameters(name):
@@ -86,7 +30,7 @@ def get_search_parameters(name):
 	params["sort"] = "0"
 	params["radius.filter"] = "2000"
 	params["limit"] = "1" #returning top #1 search
-	params["location"] = "Chandler, AZ"
+	params["location"] = "Scottsdale, AZ"
 	return params
 	
 def get_results(params):
@@ -115,11 +59,13 @@ def main():
   return api_calls #returns the API call
 
 def phone_key_finder(key):
-	try:
-		return key[u'phone']
-	except KeyError:
-		print key[u'name'], "needs manual phone number verification"
-		return "Manual Input"
+  try:
+    phonenum = key[u'phone']
+    format_phonenum = '(' + phonenum[0:3] + ') ' + phonenum[3:6] + '-' + phonenum[6:]
+    return format_phonenum
+  except KeyError:
+    print [u'name'], "needs manual phone number verification."
+    return "Manual Input"
 	
 def get_business_info(): #I can probably move this to main(), but i am keeping it separated for debugging sake
   for key in main()[0]['businesses']:
