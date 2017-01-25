@@ -1,1 +1,1 @@
-c:\python27
+c:\users\asus\anaconda3
