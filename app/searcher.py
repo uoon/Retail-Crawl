@@ -4,23 +4,70 @@ import csv
 import os
 
 name = ''
-names = ["Monarch",
-"Butterfields Pancake House",
-"Virtu",
-"Eddie V\'s Prime Seafood",
-"Fogo de Chao Brazilian Steakhouse",
-"Butters Pancakes & Cafe",
-"deseo at Westin Kierland Resort and Spa",
-"Grassroots kitchen and Tap",
-"Rehab Burger Therapy",
-"Roaring Fork",
-"True Food Kitchen",
-"Bandera",
-"Franco\'s Italian Caffe",
-"Mastro\'s City Hall",
-"Citizen Public House",
-"Coconut\'s Fish Cafe",
-"Olive & Ivy"]
+names = ["Wild Berry Diner",
+"Cafe Mix Greek & American Food",
+"Macayo\'s Mexican Kitchen",
+"Sweet Tomatoes",
+"Nunthaporn\'s Thai Cuisine",
+"Cracker Barrel",
+"The Beer Research Institute",
+"Thai Kitchen",
+"Roma Cafe",
+"Black Angus Steakhouse",
+"Tom\'s BBQ",
+"Over Easy",
+"Garcia\'s Mexican Restaurant",
+"Thai Spices - Thai Restaurant",
+"Famous Dave\'s",
+"Midwestern Restaurant",
+"Sunnyside Breakfast Lounge",
+"Bobby Q",
+"Sourdough Pizza Italian Restaurant",
+"Carrabba\'s Italian Grill",
+"5 R Cha Thai Bistro",
+"Fuddruckers",
+"Red Robin Gourmet Burgers",
+"Serrano\'s Mexican Food Restaurant",
+"Golden Gate Chinese Restaurant",
+"Uncle Bear\'s Grill & Bar",
+"MOD Pizza",
+"The Draft Sports Bar & Grill",
+"Pacino\'s",
+"El Charro Restaurant & Lounge",
+"P F Chang\'s China Bistro",
+"Mellow Mushroom",
+"Lucky Lou\'s",
+"Red Japanese",
+"Islamorada Fish Company",
+"Red Lobster - S. Alma School Rd.",
+"Broken Yolk Cafe",
+"Seafood Market and Restaurant",
+"Mad Greens",
+"On The Border Mexican Grill & Cantina",
+"Little Mesa Cafe",
+"Los Dos Molinos"
+"Mi Amigo\'s Mexican Grill",
+"Native Grill & Wings - Dobson/Guadalupe",
+"Sauce Pizza & Wine",
+"Mekong Palace",
+"Got Sushi",
+"Buca di Beppo",
+"Green Corner Restaurant",
+"Tokyo Joe\'s",
+"Legends",
+"Tum Nak Thai",
+"Native Grill & Wings - Gilbert Rd.",
+"China City",
+"Rumbi Island Grill",
+"Chili\'s Grill & Bar",
+"Linda\'s Hoosier Cafe",
+"Pink Pepper Thai Cuisine",
+"Il Vinaio",
+"Paradise Bakery & Cafe",
+"Ra Sushi",
+"Bisbee Breakfast Club Mesa",
+"JJ Madisons",
+"Hodori Restaurant"]
 result = []
 
 def get_search_parameters(name):
@@ -30,7 +77,7 @@ def get_search_parameters(name):
 	params["sort"] = "0"
 	params["radius.filter"] = "2000"
 	params["limit"] = "1" #returning top #1 search
-	params["location"] = "Scottsdale, AZ"
+	params["location"] = "Mesa, AZ"
 	return params
 	
 def get_results(params):
@@ -78,7 +125,7 @@ def writer():
   #writes to csv file. '\n' is a row break. I should write a for loop for
   #multiple API calls, and include '\n' after each loop.
   #Also, I may want to figure out how to separate values to columns.
-  with open('yelp test.csv', 'ab') as csvfile:
+  with open('yelp test.csv', 'w') as csvfile:
 		resultwriter = csv.writer(csvfile)
 		for business in result:
 		  resultwriter.writerow([business[0].encode('utf-8'), business[1], business[2], business[3]])
